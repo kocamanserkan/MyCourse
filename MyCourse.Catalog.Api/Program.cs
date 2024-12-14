@@ -1,11 +1,14 @@
+using MongoDB.Driver;
 using MyCourse.Catalog.Api.Options;
+using MyCourse.Catalog.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddOptionsExt();
 
+builder.Services.AddOptionsExt();
+builder.Services.AddDatabaseServiceExt();
 
 var app = builder.Build();
 
