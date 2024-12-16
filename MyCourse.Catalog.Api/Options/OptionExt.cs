@@ -1,4 +1,6 @@
-﻿namespace MyCourse.Catalog.Api.Options
+﻿using Microsoft.Extensions.Options;
+
+namespace MyCourse.Catalog.Api.Options
 {
     public static class OptionExt
     {
@@ -7,7 +9,12 @@
         {
 
             services.AddOptions<MongoOptions>().BindConfiguration(nameof(MongoOptions)).ValidateDataAnnotations().ValidateOnStart();
+            
+            
+            services.AddSingleton(sp=>sp.GetRequiredService<IOptions<MongoOptions>>().Value);
             return services;
+
+
 
         }
 
